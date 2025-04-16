@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EliteHome Control Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div id="particles-js"></div>
+    <div class="gradient-overlay"></div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Arduino Connected Successfully!</span>
+        </div>
+        <i class="fas fa-times toast-close"></i>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="brand-header">
+            <div class="brand-info">
+                <div class="brand-logo">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="brand-text">EliteHome Pro</div>
+            </div>
+            <div class="dashboard-controls">
+                <button class="control-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="control-btn" id="connect-btn">
+                    <i class="fas fa-plug"></i> Connect
+                </button>
+            </div>
+        </div>
+
+        <!-- Appliance Grid -->
+        <div class="appliance-grid">
+            <!-- Light -->
+            <div class="appliance-card" id="light-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, var(--philips), #00a8f3);">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="appliance-name">Smart Light</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="light-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="light-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="light"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fan -->
+            <div class="appliance-card" id="fan-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, var(--havells), #ff6b6b);">
+                        <i class="fas fa-fan"></i>
+                    </div>
+                    <div class="appliance-name">Smart Fan</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="fan-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="fan-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="fan"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AC -->
+            <div class="appliance-card" id="ac-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, var(--samsung), #4b7bec);">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div class="appliance-name">Air Conditioner</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="ac-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="ac-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="ac"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TV -->
+            <div class="appliance-card" id="tv-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, var(--lg), #e84393);">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="appliance-name">Smart TV</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="tv-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="tv-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="tv"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Curtains -->
+            <div class="appliance-card" id="curtains-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe);">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="appliance-name">Smart Curtains</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="curtains-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="curtains-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="curtains"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="appliance-card" id="security-card">
+                <div class="appliance-content">
+                    <div class="appliance-icon" style="background: linear-gradient(135deg, #e17055, #fab1a0);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="appliance-name">Security System</div>
+                    <div class="toggle-container">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="security-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div id="security-status" class="status off">OFF</div>
+                    <div class="appliance-settings">
+                        <button class="settings-btn" data-appliance="security"><i class="fas fa-sliders-h"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>System Settings</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-item">
+                        <label>Theme Color</label>
+                        <select id="theme-selector">
+                            <option value="purple">Purple</option>
+                            <option value="blue">Blue</option>
+                            <option value="green">Green</option>
+                            <option value="red">Red</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>Notification Sounds</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="sound-toggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label>Auto Connect</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="autoconnect-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="save-settings" class="control-btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appliance Settings Modal -->
+        <div id="appliance-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="appliance-modal-title">Appliance Settings</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body" id="appliance-settings-body">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+                <div class="modal-footer">
+                    <button id="save-appliance-settings" class="control-btn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
